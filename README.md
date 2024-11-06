@@ -29,3 +29,20 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 29/10
 -> Creacion y estructuracion base del proyecto.
+-> Servicio creacion de jugador OK.
+
+30/10
+-> Pagina busqueda como principal y actualizada.
+-> Paginacion.
+
+31/10
+-> Detalle (beta).
+-> Instalado de chart.js y grafico (beta).
+
+1/11
+-> Modificar jugador (beta).
+-> Boton xlsx para exportar listado.
+-> Creacion componente login.
+
+5/11
+-> Login y registro de usuario ok + rutas protegidas.

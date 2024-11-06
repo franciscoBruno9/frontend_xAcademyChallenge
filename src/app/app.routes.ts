@@ -2,29 +2,46 @@ import { Routes } from '@angular/router';
 import { CreatePlayerComponent } from './views/create-player/create-player.component';
 import { UpdatePlayerComponent } from './views/update-player/update-player.component';
 import { SearchPlayerComponent } from './views/search-player/search-player.component';
-import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { LoginComponent } from './views/login-user/login-user.component';
+import { UploadComponent } from './core/upload/upload.component';
+import { RegisterUserComponent } from './views/register-user/register-user.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
-        path: 'landing',
-        component: LandingPageComponent
+        path: 'register',
+        component: RegisterUserComponent
     },
     {
-        path: 'create',
-        component: CreatePlayerComponent
-    },
-    {
-        path: 'update',
-        component: UpdatePlayerComponent
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: 'search',
-        component: SearchPlayerComponent
+        component: SearchPlayerComponent,
+        //Agregar el authGuard
     },
     {
-        path:'', redirectTo:'landing', pathMatch:'full'
+        path: 'create',
+        component: CreatePlayerComponent,
+        canActivate: [AuthGuard]
     },
     {
-        path:'**', component: LandingPageComponent  
+        path: 'update/:id',
+        component: UpdatePlayerComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'upload',
+        component: UploadComponent,
+        
+    },
+    {
+        path:'', 
+        redirectTo:'login', 
+        pathMatch:'full'
+    },
+    {
+        path:'**', component: LoginComponent
     }
 ];

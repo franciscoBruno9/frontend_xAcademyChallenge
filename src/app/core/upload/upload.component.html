@@ -1,0 +1,9 @@
+<div class="container-principal">
+    <h1 class="titulo-principal">FIFA MUNDI</h1>
+    <h2 class="subtitulo">Importar Datos</h2>
+    <form class="formulario" (ngSubmit)="subirArchivo()">
+        <input type="file" name="file" accept=".csv" (change)="archivoCargado($event)" required />
+        <button type="submit">Subir CSV</button>
+      </form>
+</div>
+

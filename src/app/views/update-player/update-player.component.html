@@ -1,1 +1,93 @@
-<p>update-player works!</p>
+<div class="container-principal">
+  <h1 class="titulo-principal">FIFA MUNDI</h1>
+  <h2 class="subtitulo">DETALLE DEL JUGADOR</h2>
+  <div class="formulario">
+    <div class="contenedor-imagen-form">
+      <div class="columna-izquierda">
+        <div class="div-imagen">
+          <img [src]="player_face_url" alt="Imagen del Jugador" class="imagen-jugador" *ngIf="player_face_url" />
+        </div>
+        <app-grafico-skills *ngIf="playerData" [playerData]="playerData" class="grafico-skills"></app-grafico-skills>
+      </div>
+      <div class="form-datos">
+        <form #playerForm="ngForm" (ngSubmit)="submitForm(playerForm)">
+          <div class="div-atributo">
+            <label for="long_name">Nombre completo:</label>
+            <input type="text" id="long_name" name="long_name" [(ngModel)]="long_name" required>
+          </div>
+          <div class="div-atributo">
+            <label for="nationality_name">Nacionalidad:</label>
+            <input type="text" id="nationality_name" name="nationality_name" [(ngModel)]="nationality_name" required>
+          </div>
+          <div class="div-atributo">
+            <label for="age">Edad:</label>
+            <input type="number" id="age" name="age" max="80" [(ngModel)]="age" required>
+          </div>
+          <div class="div-atributo">
+            <label for="player_face_url">Imagen:</label>
+            <input type="text" id="player_face_url" name="player_face_url" [(ngModel)]="player_face_url" required>
+          </div>
+          <div class="div-atributo">
+            <label for="fifa_version">Versión de FIFA:</label>
+            <input type="text" id="fifa_version" name="fifa_version" max="40" [(ngModel)]="fifa_version" required>
+          </div>
+          <div class="div-atributo">
+            <label for="fifa_update">Actualización:</label>
+            <input type="text" id="fifa_update" name="fifa_update" max="40" [(ngModel)]="fifa_update" required>
+          </div>
+          <div class="div-atributo">
+            <label for="club_name">Equipo:</label>
+            <input type="text" id="club_name" name="club_name" [(ngModel)]="club_name" required>
+          </div>
+          <div class="div-atributo">
+            <label for="player_positions">Posición/es:</label>
+            <input type="text" id="player_positions" name="player_positions" [(ngModel)]="player_positions" required>
+          </div>
+          <div class="div-atributo">
+            <label for="overall">General:</label>
+            <input type="number" id="overall" name="overall" max="99" [(ngModel)]="overall" required>
+          </div>
+          <div class="div-atributo">
+            <label for="potential">Potencial:</label>
+            <input type="number" id="potential" name="potential" max="99" [(ngModel)]="potential" required>
+          </div>
+          <div class="div-atributo">
+            <label for="pace">Ritmo:</label>
+            <input type="number" id="pace" name="pace" max="99" [(ngModel)]="pace" required>
+          </div>
+          <div class="div-atributo">
+            <label for="shooting">Remate:</label>
+            <input type="number" id="shooting" name="shooting" max="99" [(ngModel)]="shooting" required>
+          </div>
+          <div class="div-atributo">
+            <label for="passing">Pase:</label>
+            <input type="number" id="passing" name="passing" max="99" [(ngModel)]="passing" required>
+          </div>
+          <div class="div-atributo">
+            <label for="dribbling">Dribling:</label>
+            <input type="number" id="dribbling" name="dribbling" max="99" [(ngModel)]="dribbling" required>
+          </div>
+          <div class="div-atributo">
+            <label for="defending">Defensa:</label>
+            <input type="number" id="defending" name="defending" max="99" [(ngModel)]="defending" required>
+          </div>
+          <div class="div-atributo">
+            <label for="physic">Psiquica:</label>
+            <input type="number" id="physic" name="physic" max="99" [(ngModel)]="physic" required>
+          </div>
+          <p style="color: red;">*Valor numerico maximo 99.</p>
+          <div class="div-botones">
+            <button class="boton-opcion" type="submit" [disabled]="playerForm.pristine">MODIFICAR</button>
+            <button class="boton-opcion" (click)="irA()">CANCELAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="mostrarModal" class="modal">
+    <div class="modal-content">
+      <span class="cerrar" (click)="cerrarModal()">X</span>
+      <p>{{ mensaje }}</p>
+    </div>
+  </div>
+</div>

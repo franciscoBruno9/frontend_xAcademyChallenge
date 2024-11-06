@@ -2,7 +2,7 @@
     text-align: center; 
     color: white; 
     background-color: #bfdaf7;
-    height: 100%;
+    min-height: 100vh;
     padding: 20px;
 }
 
@@ -14,43 +14,10 @@
     color: white;
 }
 
-.formulario {
-    max-width: 600px; 
-    margin: 0 auto; 
-    text-align: center; 
-    color: white; 
-    background-color: #d2e5f8;
-    padding: 20px;
-    border-radius: 10px; 
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
-}
-
 .subtitulo {
     color: rgb(29, 74, 117);
     font-size: 30px;
     margin-bottom: 20px; 
-}
-
-.div-atributo {
-    display: flex;
-    justify-content: center;
-    color: rgb(29, 74, 117);
-    font-size: 20px;
-    margin: 10px ;
-    gap: 20px; 
-}
-
-.div-atributo label {
-    width: 200px; 
-    text-align: right;
-}
-
-input {            
-    padding: 5px;              
-    font-size: 16px;            
-    border: 1px solid #adc7e9;   
-    border-radius: 5px;          
-    box-sizing: border-box; 
 }
 
 .boton-opcion {
@@ -75,10 +42,34 @@ input {
     cursor: not-allowed; 
 }
 
-.div-botones {
+.formulario {
+    max-width: 600px; 
+    margin: 0 auto; 
+    text-align: center; 
+    color: rgb(0, 0, 0); 
+    background-color: #d2e5f8;
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+input {            
+    padding: 5px;              
+    font-size: 16px;            
+    border: 1px solid #adc7e9;   
+    border-radius: 5px;          
+    box-sizing: border-box; 
+}
+
+.login{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 8px;
+}
+
+.registrate{
+    cursor: pointer; 
+    text-decoration: underline;
 }
 
 .modal {

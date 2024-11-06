@@ -9,5 +9,11 @@ export interface Player {
     nationality_name:string,
     overall:number,
     potential:number,
-    age:number
+    age:number,
+    pace:number,
+    shooting:number,
+    passing:number,
+    dribbling:number,
+    defending:number,
+    physic:number
 }
