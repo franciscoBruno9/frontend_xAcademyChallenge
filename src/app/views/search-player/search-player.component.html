@@ -1,59 +1,52 @@
 <div class="container-principal">
-    <h1 class="titulo-principal">FIFA MUNDI</h1>
-    <h2 class="subtitulo">BUSCAR JUGADOR</h2>
-    <div class="filtros">
-        <input type="text" placeholder="Id" [(ngModel)]="filtros.id" (input)="filtrar()" />
-        <input type="text" placeholder="Nombre" [(ngModel)]="filtros.long_name" (input)="filtrar()" />
-        <input type="text" placeholder="Nacionalidad" [(ngModel)]="filtros.nationality_name" (input)="filtrar()" />
-        <input type="text" placeholder="Equipo" [(ngModel)]="filtros.club_name" (input)="filtrar()" />
-      </div>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Nacionalidad</th>
-            <th>Equipo</th>
-            <th>Posiciónes</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of players">
-            <td>{{ p.id }}</td>
-            <td>{{ p.long_name }}</td>
-            <td>{{ p.nationality_name}}</td>
-            <td>{{ p.club_name }}</td>
-            <td>{{ p.player_positions }}</td>
-            <td>
-              <button (click)="verDetalle(p.id)">Detalle</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <h1 class="titulo-principal">FIFA MUNDI</h1>
+  <h2 class="subtitulo">BUSCAR JUGADOR</h2>
+  <div class="filtros">
+      <input type="text" placeholder="Id" [(ngModel)]="filtros.id" (input)="filtrar()" />
+      <input type="text" placeholder="Nombre" [(ngModel)]="filtros.long_name" (input)="filtrar()" />
+      <input type="text" placeholder="Nacionalidad" [(ngModel)]="filtros.nationality_name" (input)="filtrar()" />
+      <input type="text" placeholder="Equipo" [(ngModel)]="filtros.club_name" (input)="filtrar()" />
+  </div>
 
-      <div class="pagination">
-        <button (click)="irA()">CREAR JUGADOR</button>
-        <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
-        <span>Página {{ currentPage }} de {{ totalPages }}</span>
-        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
-        <button (click)="importar()" *ngIf="players.length === 0">IMPORTAR CSV</button>
-        <button (click)="exportar()" *ngIf="players.length > 0">DESCARGAR CSV</button>
-      </div>
-   
-</div>
-<div *ngIf="mostrarModal" class="modal">
-  <div class="modal-content">
-    <span class="cerrar" (click)="cerrarModal()">X</span>
-    <p>{{ mensaje }}</p>
+  <table>
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Nacionalidad</th>
+              <th>Equipo</th>
+              <th>Posiciónes</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let p of players">
+              <td>{{ p.id }}</td>
+              <td>{{ p.long_name }}</td>
+              <td>{{ p.nationality_name }}</td>
+              <td>{{ p.club_name }}</td>
+              <td>{{ p.player_positions }}</td>
+              <td>
+                  <button (click)="verDetalle(p.id)">Detalle</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  
+  <div class="pagination">
+      <button (click)="irA()">CREAR JUGADOR</button>
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+      <button (click)="importar()" *ngIf="players.length === 0">IMPORTAR CSV</button>
+      <button (click)="exportar()" *ngIf="players.length > 0">DESCARGAR CSV</button>
   </div>
 </div>
-<footer >
-  <div>
-    <label for="">Desarrollador: Francisco Bruno</label>
-  </div>
-  <div>
-    <a href="http://localhost:8080/api-docs" target="_blank" style="color: #fff; text-decoration: none;">Documentación</a>
-  </div>
+<footer>
+<div>
+  <label for="">Desarrollador: Francisco Bruno</label>
+</div>
+<div>
+  <a href="http://localhost:8080/api-docs" target="_blank" class="footer-link">Documentación</a>
+</div>
 </footer>

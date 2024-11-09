@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../core/services/user.service';
 import { User } from '../../core/model/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-user',
@@ -15,9 +16,6 @@ import { User } from '../../core/model/user.model';
   styleUrl: './register-user.component.scss'
 })
 export class RegisterUserComponent {
-
-  mensaje: string = '';
-  mostrarModal: boolean = false;
 
   constructor( 
     private userService: UserService,
@@ -33,22 +31,19 @@ export class RegisterUserComponent {
 
       this.userService.postUser(nuevo).subscribe({
         next: (response) => {
-          this.mensaje = response.message;
-          this.mostrarModal = true;
-          form.reset();
+          Swal.fire('Éxito', response.message, 'success');
+          this.router.navigate(['/login']);
         },
         error: (error) => {
-          console.error('Error al crear el usuario:', error);
-          this.mensaje = 'Error al crear el usuario';
-          this.mostrarModal = true;
+          console.error('Error al registrarse:', error);
+          Swal.fire('Error', 'Error al registrarse', 'error');
         }
       
       });
     }
   };
 
-  cerrarModal() {
-    this.mostrarModal = false;
-    this.router.navigate(['/login']);
-  };
+  irLogin(){
+    this.router.navigate(['/login'])
+  }
 }

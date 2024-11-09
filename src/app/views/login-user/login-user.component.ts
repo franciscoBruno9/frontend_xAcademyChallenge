@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,6 @@ import { AuthService } from '../../core/services/auth.service';
 export class LoginComponent {
   username : string = '';
   password : string = '';
-  mensaje: string = '';
-  mostrarModal: boolean = false;
 
 constructor(
   private router : Router,
@@ -31,25 +30,19 @@ submitForm(form: NgForm) {
         next: (response) => {
           console.log(response)
           this.authService.saveToken(response);
+          Swal.fire('Éxito', 'Bienvenido!', 'success');
           this.router.navigate(['/search']);
         },
         error: (error) => {
-          this.mensaje = 'Error al iniciar sesión. Verifica tus credenciales.';
-          this.mostrarModal = true;
+          console.error('Error al registrarse:', error);
+          Swal.fire('Error', 'Error al iniciar sesión. Verifica tus credenciales.', 'error');
+          form.reset();
         }
       });
       
     
   }
 }
-
-cerrarModal() {
-  this.mostrarModal = false;
-}
-
-/*irA(){
-  this.router.navigate(['/search']);
-}*/
 
 irRegistrar() {
   this.router.navigate(['/register']);

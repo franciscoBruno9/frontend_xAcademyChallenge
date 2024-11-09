@@ -19,7 +19,7 @@ export const routes: Routes = [
     {
         path: 'search',
         component: SearchPlayerComponent,
-        //Agregar el authGuard
+        canActivate: [AuthGuard]
     },
     {
         path: 'create',

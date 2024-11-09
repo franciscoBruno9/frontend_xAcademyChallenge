@@ -2,15 +2,17 @@
   <h1 class="titulo-principal">FIFA MUNDI</h1>
   <h2 class="subtitulo">DETALLE DEL JUGADOR</h2>
   <div class="formulario">
-    <div class="contenedor-imagen-form">
-      <div class="columna-izquierda">
-        <div class="div-imagen">
-          <img [src]="player_face_url" alt="Imagen del Jugador" class="imagen-jugador" *ngIf="player_face_url" />
+    <form #playerForm="ngForm" (ngSubmit)="submitForm(playerForm)">
+      <div class="formulario-contenido">
+
+        <div class="columna-izquierda">
+          <div class="div-imagen">
+            <img [src]="player_face_url" alt="Imagen del Jugador" class="imagen-jugador" *ngIf="player_face_url" />
+          </div>
+          <app-grafico-skills *ngIf="playerData" [playerData]="playerData" class="grafico-skills"></app-grafico-skills>
         </div>
-        <app-grafico-skills *ngIf="playerData" [playerData]="playerData" class="grafico-skills"></app-grafico-skills>
-      </div>
-      <div class="form-datos">
-        <form #playerForm="ngForm" (ngSubmit)="submitForm(playerForm)">
+
+        <div class="form-datos">
           <div class="div-atributo">
             <label for="long_name">Nombre completo:</label>
             <input type="text" id="long_name" name="long_name" [(ngModel)]="long_name" required>
@@ -72,22 +74,26 @@
             <input type="number" id="defending" name="defending" max="99" [(ngModel)]="defending" required>
           </div>
           <div class="div-atributo">
-            <label for="physic">Psiquica:</label>
+            <label for="physic">Mentalidad:</label>
             <input type="number" id="physic" name="physic" max="99" [(ngModel)]="physic" required>
           </div>
-          <p style="color: red;">*Valor numerico maximo 99.</p>
-          <div class="div-botones">
-            <button class="boton-opcion" type="submit" [disabled]="playerForm.pristine">MODIFICAR</button>
-            <button class="boton-opcion" (click)="irA()">CANCELAR</button>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </div>
-  <div *ngIf="mostrarModal" class="modal">
-    <div class="modal-content">
-      <span class="cerrar" (click)="cerrarModal()">X</span>
-      <p>{{ mensaje }}</p>
-    </div>
+
+      <div class="div-botones">
+        <button class="boton-opcion" type="submit" [disabled]="playerForm.pristine">MODIFICAR</button>
+        <button class="boton-opcion" type="button" (click)="irA()">CANCELAR</button>
+      </div>
+      <p style="color: red;">*Todos los campos son requeridos.</p>
+      <p style="color: red;">*Valores numéricos máximo 99.</p>
+    </form>
   </div>
 </div>
+<footer>
+  <div>
+    <label for="">Desarrollador: Francisco Bruno</label>
+  </div>
+  <div>
+    <a href="http://localhost:8080/api-docs" target="_blank" class="footer-link">Documentación</a>
+  </div>
+</footer>

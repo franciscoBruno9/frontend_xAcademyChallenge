@@ -5,6 +5,7 @@ import { Player } from '../../core/model/player.model';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GraficoSkillsComponent } from '../../core/graficoSkills/grafico-skills.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-player',
@@ -30,9 +31,6 @@ export class UpdatePlayerComponent implements OnInit {
   dribbling:number = 0;
   defending:number = 0;
   physic:number = 0
-
-  mensaje: string = '';
-  mostrarModal: boolean = false;
 
   playerData: any;
 
@@ -101,29 +99,20 @@ export class UpdatePlayerComponent implements OnInit {
   
         this.playerService.putPlayer(jugador).subscribe({
           next: (response) => {
-            this.mensaje = response.message;
-            this.mostrarModal = true;
+            Swal.fire('Éxito', response.message, 'success');
           },
           error: (error) => {
             console.error('Error al modificar el jugador:', error);
-            this.mensaje = 'Error al modificar el jugador';
-            this.mostrarModal = true;
+            Swal.fire('Error', 'Error al crear el jugador', 'error');
           }
         });
       } else {
-        console.error("ID del jugador no encontrado en la URL.");
-        this.mensaje = 'ID del jugador no encontrado.';
-        this.mostrarModal = true;
+        Swal.fire('Error', 'Jugador no encontrado.', 'error');
       }
     }
   }
-  
 
   irA() {
     this.router.navigate(['/search']);
-  }
-
-  cerrarModal() {
-    this.mostrarModal = false;
   }
 }

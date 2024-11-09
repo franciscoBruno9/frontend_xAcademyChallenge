@@ -5,79 +5,82 @@
     <form [formGroup]="playerForm" (ngSubmit)="submitForm()">
       <div class="div-atributo">
         <label for="long_name">Nombre completo:</label>
-        <input type="text" id="long_name" formControlName="long_name">
+        <input type="text" id="long_name" formControlName="long_name" />
       </div>
       <div class="div-atributo">
         <label for="nationality_name">Nacionalidad:</label>
-        <input type="text" id="nationality_name" formControlName="nationality_name">
+        <input type="text" id="nationality_name" formControlName="nationality_name" />
       </div>
       <div class="div-atributo">
         <label for="age">Edad:</label>
-        <input type="number" id="age" formControlName="age">
+        <input type="number" id="age" formControlName="age" />
       </div>
       <div class="div-atributo">
-        <label for="player_face_url">Imagen:</label>
-        <input type="text" id="player_face_url" formControlName="player_face_url">
+        <label for="player_face_url">Imágen:</label>
+        <input type="text" id="player_face_url" formControlName="player_face_url" />
       </div>
       <div class="div-atributo">
         <label for="fifa_version">Versión de FIFA:</label>
-        <input type="text" id="fifa_version" formControlName="fifa_version">
+        <input type="text" id="fifa_version" formControlName="fifa_version" />
       </div>
       <div class="div-atributo">
         <label for="fifa_update">Actualización:</label>
-        <input type="text" id="fifa_update" formControlName="fifa_update">
+        <input type="text" id="fifa_update" formControlName="fifa_update" />
       </div>
       <div class="div-atributo">
         <label for="club_name">Equipo:</label>
-        <input type="text" id="club_name" formControlName="club_name">
+        <input type="text" id="club_name" formControlName="club_name" />
       </div>
       <div class="div-atributo">
         <label for="player_positions">Posición/es:</label>
-        <input type="text" id="player_positions" formControlName="player_positions">
+        <input type="text" id="player_positions" formControlName="player_positions" />
       </div>
       <div class="div-atributo">
         <label for="overall">General:</label>
-        <input type="number" id="overall" formControlName="overall">
+        <input type="number" id="overall" formControlName="overall" />
       </div>
       <div class="div-atributo">
         <label for="potential">Potencial:</label>
-        <input type="number" id="potential" formControlName="potential">
+        <input type="number" id="potential" formControlName="potential" />
       </div>
       <div class="div-atributo">
         <label for="pace">Ritmo:</label>
-        <input type="number" id="pace" formControlName="pace">
+        <input type="number" id="pace" formControlName="pace" />
       </div>
       <div class="div-atributo">
         <label for="shooting">Remate:</label>
-        <input type="number" id="shooting" formControlName="shooting">
+        <input type="number" id="shooting" formControlName="shooting" />
       </div>
       <div class="div-atributo">
         <label for="passing">Pase:</label>
-        <input type="number" id="passing" formControlName="passing">
+        <input type="number" id="passing" formControlName="passing" />
       </div>
       <div class="div-atributo">
         <label for="dribbling">Dribling:</label>
-        <input type="number" id="dribbling" formControlName="dribbling">
+        <input type="number" id="dribbling" formControlName="dribbling" />
       </div>
       <div class="div-atributo">
         <label for="defending">Defensa:</label>
-        <input type="number" id="defending" formControlName="defending" >
+        <input type="number" id="defending" formControlName="defending" />
       </div>
       <div class="div-atributo">
-        <label for="physic">Físico:</label>
-        <input type="number" id="physic" formControlName="physic" >
+        <label for="physic">Mentalidad:</label>
+        <input type="number" id="physic" formControlName="physic" />
       </div>
       <p style="color: red;">*Todos los campos son requeridos.</p>
+      <p style="color: red;">*Valores numéricos máximo 99.</p>
       <div class="div-botones">
         <button class="boton-opcion" type="submit" [disabled]="playerForm.invalid">GUARDAR</button>
         <button class="boton-opcion" (click)="irA()">CANCELAR</button>
       </div>
     </form>
   </div>
-  <div *ngIf="mostrarModal" class="modal">
-    <div class="modal-content">
-      <span class="cerrar" (click)="cerrarModal()">X</span>
-      <p>{{ mensaje }}</p>
-    </div>
-  </div>
 </div>
+<footer>
+  <div>
+    <label for="">Desarrollador: Francisco Bruno</label>
+  </div>
+  <div>
+    <a href="http://localhost:8080/api-docs" target="_blank" class="footer-link">Documentación</a>
+  </div>
+</footer>

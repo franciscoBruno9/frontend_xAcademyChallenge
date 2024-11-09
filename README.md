@@ -46,3 +46,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 5/11
 -> Login y registro de usuario ok + rutas protegidas.
+
+7/11
+-> Nuevas alertas con Swalalert2.
+-> Cambios esteticos en las views.

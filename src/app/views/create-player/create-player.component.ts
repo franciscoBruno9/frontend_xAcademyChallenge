@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Valid
 import { Player } from '../../core/model/player.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-player',
@@ -18,14 +19,12 @@ import { Router } from '@angular/router';
 export class CreatePlayerComponent {
 
   playerForm: FormGroup;
-  mensaje: string = '';
-  mostrarModal: boolean = false;
-
   constructor(
     private fb : FormBuilder,
     private playerService: PlayerService,
     private router: Router
-  ){this.playerForm = this.fb.group({
+  ){
+    this.playerForm = this.fb.group({
     long_name: ['', Validators.required],
     nationality_name: ['', Validators.required],
     age: ['', [Validators.required, Validators.max(80)]],
@@ -45,19 +44,17 @@ export class CreatePlayerComponent {
   )};
   submitForm() {
       const nuevo: Omit<Player, 'id' > = this.playerForm.value;
-
       this.playerService.postPlayer(nuevo).subscribe({
         next: (response) => {
-          this.mensaje = response.message;
-          this.mostrarModal = true;
-          this.mensaje = 'Jugador creado exitosamente';
+          console.log(response);
+          Swal.fire('Éxito', response.message, 'success');
+          this.router.navigate(['/search']);
         },
         error: (error) => {
           console.error('Error al crear el jugador:', error);
-          this.mensaje = 'Error al crear el jugador';
-          this.mostrarModal = true;
+          Swal.fire('Error', 'Error al crear el jugador', 'error');
+          this.playerForm.reset();
         }
-      
       });
     }
 
@@ -65,8 +62,6 @@ export class CreatePlayerComponent {
     this.router.navigate(['/search']);
   }
 
-  cerrarModal() {
-    this.mostrarModal = false;
-  }
+
 }
 

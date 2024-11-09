@@ -5,6 +5,7 @@ import { Player } from '../../core/model/player.model';
 import { PlayerService } from '../../core/services/player.service';
 import { Router } from '@angular/router';
 import * as XLSX from 'xlsx';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-search-player',
@@ -27,8 +28,6 @@ export class SearchPlayerComponent {
   mensaje: string = '';
   currentPage: number = 1;
   totalPages: number = 1;
-
-  mostrarModal: boolean = false;
   mostrarUpload: boolean = false;
 
   constructor(
@@ -47,9 +46,8 @@ export class SearchPlayerComponent {
         this.totalPages = data.totalPages; 
       },
       error: (error) => {
-        console.error("Error cargar jugadores:", error);
-        this.mensaje = "No existen jugadores con los criterios dados."
-        this.mostrarModal = true;
+        console.error("Error cargando jugadores:", error);
+        Swal.fire('Alerta', 'No existen jugadores con los criterios dados', 'warning');
       }
     });
   }
@@ -69,7 +67,6 @@ export class SearchPlayerComponent {
         this.getPlayers(); 
     }
 }
-
   prevPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
@@ -79,10 +76,6 @@ export class SearchPlayerComponent {
 
   irA() {
     this.router.navigate(['/create']);
-  }
-
-  cerrarModal() {
-    this.mostrarModal = false;
   }
 
   importar(){
